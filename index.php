@@ -52,42 +52,38 @@
 
 </head>
 <body>
-    <div>
-        <?php 
-            for($i = 0; $i < count($hotels); $i++){
+    <h1 class='text-center py-5'>
+        PHP Hotel
+    </h1>
+    <div class='container'>
+        <table class="table border">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrizione</th>
+                    <th scope="col">Parcheggio</th>
+                    <th scope="col">Voto</th>
+                    <th scope="col">Distanza dal centro</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php 
+            foreach ($hotels as $ind => $hotel) {
                 ?> 
-                 <ul>
-                    <li>
-                    name: <?php echo $hotels[$i]['name']; ?>
-                    </li>
-                    <li>
-                    description: <?php echo $hotels[$i]['description']; ?>
-                    </li>
-                    <li>
-                    parking:
-                     <?php
-                      if($hotels[$i]['parking'] == true){
-                         echo 'Si';
-                      } 
-                      else{
-                         echo 'No';
-                      }
-                      ?>
-                    </li> 
-                    <li>
-                    vote: <?php echo $hotels[$i]['vote']; ?>
-                    </li> 
-                    <li>
-                    distance_to_center: <?php echo $hotels[$i]['distance_to_center']; ?>
-                    </li>      
-                 </ul>
-                 <hr>
-
+                <tr>
+                    <th scope="row"><?php echo $ind + 1; ?></th>
+                    <td><?php echo $hotel['name']; ?></td>
+                    <td><?php echo $hotel['description']; ?></td>
+                    <td><?php echo ($hotel['parking'] ? 'Si' : 'No'); ?></td>
+                    <td><?php echo $hotel['vote']; ?></td>
+                    <td><?php echo $hotel['distance_to_center']; ?></td>
+                </tr>
                 <?php
             }
-
         ?>
-    </div>
-    
+            </tbody>
+        </table>
+    </div>    
 </body>
 </html>
